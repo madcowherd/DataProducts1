@@ -15,13 +15,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, echo=TRUE}
 library(leaflet)
-
+glyphicon <- makeAwesomeIcon(icon = "globe", markerColor = "green",
+                                  iconColor = "white", library = "glyphicon")
 places <- data.frame(
   lat=c(20.684285,29.979235,-22.950964,41.890234,40.332936,-13.165408,30.323063,27.183799),
   lng=c(-88.567783,31.134202,-43.210516,12.492485,116.478424,-72.54015,35.451164,78.033142))
 names <- c('Chichen Itza','Giza Pyramids','Christ the Redeemer','Colosseum','Great Wall of China','Machu Picchu','Petra','Taj Mahal')
 
-places %>% leaflet() %>% addTiles() %>% addMarkers(popup = names)
+places %>% leaflet() %>% addTiles() %>% addAwesomeMarkers(popup = names, icon=glyphicon)
 
 ```
 
