@@ -1,0 +1,27 @@
+---
+title: "Data Products Assignment 1"
+author: "Sam Camp"
+date: "May 11, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Wonders of the World
+
+[Data found here](https://maps.google.com/maps/ms?msa=0&msid=112796152035519677174.0004740a7069563841f38&cd=6&sll=38.247969,-169.660492&sspn=25.420916,177.474242&hl=en&ie=UTF8&ll=4.915833,14.0625&spn=121.839255,270&z=2) 
+
+```{r, echo=TRUE}
+library(leaflet)
+
+places <- data.frame(
+  lat=c(20.684285,29.979235,-22.950964,41.890234,40.332936,-13.165408,30.323063,27.183799),
+  lng=c(-88.567783,31.134202,-43.210516,12.492485,116.478424,-72.54015,35.451164,78.033142))
+names <- c('Chichen Itza','Giza Pyramids','Christ the Redeemer','Colosseum','Great Wall of China','Machu Picchu','Petra','Taj Mahal')
+
+places %>% leaflet() %>% addTiles() %>% addMarkers(popup = names)
+
+```
+
